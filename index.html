@@ -22,7 +22,10 @@ and open the template in the editor.
                         Год рождения.
                     </div>
                     <div class="question-input">
-                        <input type="text" name="q1">
+                        <input type="text" name="q1" onchange="validator.checkBirthYear();">
+                        <div id="valueq1" class="value" style="display: none;" title="Нажми для редактирования">
+                            
+                        </div>
                     </div>
                 </div>
                 <div class="question error">
@@ -34,6 +37,9 @@ and open the template in the editor.
                     </div>
                     <div class="question-input">
                         <input type="text" name="q2">
+                    </div>
+                    <div id="valueq2" class="value" style="display: none;" title="Нажми для редактирования">
+                            
                     </div>
                 </div>
                 <div class="question">

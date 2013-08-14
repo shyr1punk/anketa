@@ -17,6 +17,10 @@ body {
     margin: 10px 0;
 }
 
+.question:hover {
+    background: #eeeeee;
+}
+
 .ok {
     background: #ccffcc;
 }
@@ -34,6 +38,10 @@ body {
 
 .question-text {
     
+}
+
+input {
+    font: 12pt verdana;
 }
 
 .question-input {
@@ -63,4 +71,8 @@ body {
 
 .button-submit:active {
     background-color: #2ca82c;
+}
+
+.value {
+    padding: 1px 4px;
 }
