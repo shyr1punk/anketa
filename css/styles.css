@@ -1,0 +1,66 @@
+root { 
+    display: block;
+}
+
+body {
+    font: 12pt verdana;
+    line-height: 20pt;
+}
+
+#form {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.question {
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.ok {
+    background: #ccffcc;
+}
+
+.error {
+    background: #ffcccc;
+}
+.question-title {
+    color: #999999;
+}
+
+.inline {
+    float: left;
+}
+
+.question-text {
+    
+}
+
+.question-input {
+    
+}
+
+.button {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.button-submit {
+    color: #ffffff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.button-submit:hover {
+    background-color: #4ca84c;
+}
+
+.button-submit:active {
+    background-color: #2ca82c;
+}
