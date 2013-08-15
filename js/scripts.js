@@ -30,11 +30,20 @@ Validator.prototype.selectField = function (name) {
     }
 };
 
-Validator.prototype.hideField = function (name) {
+Validator.prototype.hideInput = function (name) {
     'use strict';
     if (this.selectField(name)) {
         $('input[name="' + name + '"]').hide();
         $('#value' + name).html($('input[name="' + name + '"]').val()).show();
+    }
+};
+
+Validator.prototype.hideTextarea = function (name) {
+    'use strict';
+    if (this.selectField(name)) {
+        $('textarea[name="' + name + '"]').hide();
+        $('#value' + name).html($('textarea[name="' + name + '"]').val().replace(/\n/g, "<br />")).show();
+        console.log($('textarea[name="' + name + '"]').val());
     }
 };
 
@@ -60,10 +69,13 @@ $(function () {
     validator = new Validator();
     $('.value').click(function () {
         $(this).hide();
-        $('input[name="' + this.id.substr(5) + '"]').show().focus();
+        $('input[name="' + this.id.substr(5) + '"], textarea[name="' + this.id.substr(5) + '"]').show().focus();
     });
     $('input[type="text"]').blur(function () {
-        validator.hideField(this.name);
+        validator.hideInput(this.name);
+    });
+    $('textarea').blur(function () {
+        validator.hideTextarea(this.name);
     });
     console.log("Document ready");
 });

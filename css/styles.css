@@ -40,8 +40,12 @@ body {
     
 }
 
-input {
+textarea, input {
     font: 12pt verdana;
+}
+
+textarea {
+    line-height: 20pt;
 }
 
 .question-input {
@@ -73,6 +77,10 @@ input {
     background-color: #2ca82c;
 }
 
-.value {
+input + .value{
     padding: 1px 4px;
+}
+
+textarea + .value{
+    padding: 5px 5px;
 }
