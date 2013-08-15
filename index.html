@@ -78,9 +78,11 @@ and open the template in the editor.
                         Уровень владения английским языком:
                     </div>
                     <div class="question-input">
-                        <input type="radio" name="answer" value="q5_1">начальный;<br>
-                        <input type="radio" name="answer" value="q5_2">средний;<br>
-                        <input type="radio" name="answer" value="q5_3">свободное владение.<br>
+                        <div id="q5radiobuttons">
+                            <label for="q5radio1"><input id="q5radio1" type="radio" name="q5radio" value="начальный">начальный;<br></label>
+                            <label for="q5radio2"><input id="q5radio2" type="radio" name="q5radio" value="средний">средний;<br></label>
+                            <label for="q5radio3"><input id="q5radio3" type="radio" name="q5radio" value="свободное владение">свободное владение.<br></label>
+                        </div>
                         <textarea rows="5" cols="100" name="q5"></textarea>
                         <div id="valueq5" class="value" style="display: none;" title="Нажми для редактирования">
 
@@ -249,7 +251,7 @@ and open the template in the editor.
                             <li>Выполните задание про форму-анкету, используя один из классических шаблонизаторов: Handlebars, mustache, Dust, Jade и т.п.</li>
                             <li>Выполните задание про форму-анкету, используя один из экзотических шаблонизаторов: XSLT, YATE, BEMHTML и т.п.</li>
                         </ol>
-                        <p>Разработку необходимо вести на https://github.com/. В качестве ответа на вопрос пришлите ссылку на проект.</p>
+                        <p>Разработку необходимо вести на <a href="https://github.com/">https://github.com/</a>. В качестве ответа на вопрос пришлите ссылку на проект.</p>
                     </div>
                     <div class="question-input">
                         <textarea rows="5" cols="100" name="q15"></textarea>

@@ -8,7 +8,7 @@ function Validator() {
     return true;
 }
 
-Validator.prototype.selectField = function (name) {
+Validator.prototype.checkField = function (name) {
     'use strict';
     switch (name) {
     case 'q1':
@@ -35,7 +35,7 @@ Validator.prototype.selectField = function (name) {
 
 Validator.prototype.hideInput = function (name) {
     'use strict';
-    if (this.selectField(name)) {
+    if (this.checkField(name)) {
         $('input[name="' + name + '"]').hide();
         $('#value' + name).html($('input[name="' + name + '"]').val()).show();
         $('#' + name).removeClass('error').addClass('ok');
@@ -50,11 +50,17 @@ Validator.prototype.hideInput = function (name) {
 
 Validator.prototype.hideTextarea = function (name) {
     'use strict';
-    if (this.selectField(name)) {
+    if (this.checkField(name)) {
         $('textarea[name="' + name + '"]').hide();
         $('#value' + name).html($('textarea[name="' + name + '"]').val().replace(/\n/g, "<br>")).show();
+        if (name === 'q5') {
+            return;
+        }
         $('#' + name).removeClass('error').addClass('ok');
     } else {
+        if (name === 'q5') {
+            return;
+        }
         if ($('textarea[name="' + name + '"]').val()) {
             $('#' + name).removeClass('ok').addClass('error');
         } else {
@@ -88,18 +94,37 @@ Validator.prototype.checkGraduateYear = function (value) {
     return false;
 };
 
+Validator.prototype.checkRadio = function (name) {
+    'use strict';
+    if ($('input[name="' + name + '"]:checked').val()) {
+        return true;
+    }
+    return false;
+};
+
 $(function () {
     'use strict';
     validator = new Validator();
     $('.value').click(function () {
+        var id = this.id.substr(5);
         $(this).hide();
-        $('input[name="' + this.id.substr(5) + '"], textarea[name="' + this.id.substr(5) + '"]').show().focus();
+        $('input[name="' + id + '"], textarea[name="' + this.id.substr(5) + '"]').show().focus();
+        if (id === 'q5') {
+            $('#q5radiobuttons').show();
+        }
     });
-    $('input[type="text"]').blur(function () {
+    $('input[type="text"]').focusout(function () {
         validator.hideInput(this.name);
     });
-    $('textarea').blur(function () {
+    $('textarea').focusout(function () {
         validator.hideTextarea(this.name);
+    });
+    $('input:radio').change(function () {
+        if (validator.checkRadio(this.name)) {
+            $('#' + this.name.substr(0, 2)).removeClass('error').addClass('ok');
+        } else {
+            $('#' + this.name.substr(0, 2)).removeClass('ok').addClass('error');
+        }
     });
     console.log("Document ready");
 });
