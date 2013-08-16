@@ -127,17 +127,17 @@ $(function () {
         validator.hideTextarea(this.name);
     });
     $('.required input').change(function () {
+        $('input[name="' + this.name + '"]').removeClass('field_error');
         validator.checkAbout();
     });
     $('input:radio').change(function () {
         if (validator.checkRadio(this.name)) {
             $('#' + this.name.substr(0, 2)).removeClass('error').addClass('ok');
             $('#q5radiobuttons').removeClass('field_error');
-            validator.answers[this.name] = 1;
+            validator.answers[this.name.substr(0, 2)] = 1;
         }
         validator.writeAnswer();
     });
-    console.log("Document ready");
 });
 
 Validator.prototype.writeAnswer = function () {
@@ -190,6 +190,15 @@ Validator.prototype.check = function () {
                 }
             }
         }
+    }
+    if (!$('input[name="nameSurname"]').val()) {
+        $('input[name="nameSurname"]').addClass('field_error');
+    }
+    if (!$('input[name="phone"]').val()) {
+        $('input[name="phone"]').addClass('field_error');
+    }
+    if (!$('input[name="e-mail"]').val()) {
+        $('input[name="e-mail"]').addClass('field_error');
     }
     return status;
 };
