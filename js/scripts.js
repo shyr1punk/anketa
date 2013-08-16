@@ -4,8 +4,7 @@ var validator;
 
 function Validator() {
     'use strict';
-
-    return true;
+    this.answers = {};
 }
 
 Validator.prototype.checkField = function (name) {
@@ -39,13 +38,16 @@ Validator.prototype.hideInput = function (name) {
         $('input[name="' + name + '"]').hide();
         $('#value' + name).html($('input[name="' + name + '"]').val()).show();
         $('#' + name).removeClass('error').addClass('ok');
+        this.answers[name] = 1;
     } else {
         if ($('input[name="' + name + '"]').val()) {
             $('#' + name).removeClass('ok').addClass('error');
         } else {
             $('#' + name).removeClass('ok error');
         }
+        this.answers[name] = 0;
     }
+    this.writeAnswer();
 };
 
 Validator.prototype.hideTextarea = function (name) {
@@ -57,6 +59,7 @@ Validator.prototype.hideTextarea = function (name) {
             return;
         }
         $('#' + name).removeClass('error').addClass('ok');
+        this.answers[name] = 1;
     } else {
         if (name === 'q5') {
             return;
@@ -66,7 +69,9 @@ Validator.prototype.hideTextarea = function (name) {
         } else {
             $('#' + name).removeClass('ok error');
         }
+        this.answers[name] = 0;
     }
+    this.writeAnswer();
 };
 
 Validator.prototype.checkEmpty = function (value) {
@@ -109,9 +114,6 @@ $(function () {
         var id = this.id.substr(5);
         $(this).hide();
         $('input[name="' + id + '"], textarea[name="' + this.id.substr(5) + '"]').show().focus();
-        if (id === 'q5') {
-            $('#q5radiobuttons').show();
-        }
     });
     $('input[type="text"]').focusout(function () {
         validator.hideInput(this.name);
@@ -122,9 +124,31 @@ $(function () {
     $('input:radio').change(function () {
         if (validator.checkRadio(this.name)) {
             $('#' + this.name.substr(0, 2)).removeClass('error').addClass('ok');
+            validator.answers[this.name] = 1;
         } else {
             $('#' + this.name.substr(0, 2)).removeClass('ok').addClass('error');
         }
+        validator.writeAnswer();
     });
     console.log("Document ready");
 });
+
+Validator.prototype.writeAnswer = function () {
+    'use strict';
+    var counter = 0,
+        field;
+    for (field in this.answers) {
+        if (this.answers.hasOwnProperty(field)) {
+            console.log(field);
+            if (this.answers[field] === 1) {
+                counter += 1;
+            }
+        }
+    }
+    $('#answer').html(counter + ' вопросов');
+    if (counter === 15) {
+        $('#answer').addClass('complite');
+    } else {
+        $('#answer').removeClass('complite');
+    }
+};

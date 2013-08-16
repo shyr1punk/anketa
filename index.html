@@ -1,22 +1,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Анкета второй школы разработки в Москве</title>
+        <title>Анкета второй школы разработки интерфейсов в Москве</title>
         <!--[if lt IE 9]>
             <script src="dist/html5shiv.js"></script>
         <![endif]-->
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
         <script src="js/scripts.js" type="text/javascript"></script>
-        <link rel="stylesheet" href="css/styles.css"></link>>
+        <link rel="stylesheet" href="css/styles.css"></link>
     </head>
     <body>
         <div id="wrapper">
+            <div class="fixed-bar">
+                <h1 id="title">
+                    Анкета второй школы разработки интерфейсов в Москве
+                </h1>
+                <div id="status">
+                    Отвечено на <span id="answer">0 вопросов</span> из 15
+                </div>
+            </div>
             <form id="form" action="query.php" method="post" name="form">
                 <div id="q1" class="question">
-                    <div class="question-title">
+                    <h3 class="question-title">
                         Вопрос 1
-                    </div>
+                    </h3>
                     <div class="question-text">
                         Год рождения.
                     </div>
@@ -28,9 +36,9 @@
                     </div>
                 </div>
                 <div id="q2" class="question">
-                    <div class="question-title">
+                    <h3 class="question-title">
                         Вопрос 2
-                    </div>
+                    </h3>
                     <div class="question-text">
                         Город, в котором вы живёте.
                     </div>
@@ -42,9 +50,9 @@
                     </div>
                 </div>
                 <div id="q3" class="question">
-                    <div class="question-title">
+                    <h3 class="question-title">
                         Вопрос 3
-                    </div>
+                    </h3>
                     <div class="question-text">
                         Вуз, факультет, специальность, кафедра.
                     </div>
@@ -56,9 +64,9 @@
                     </div>
                 </div>
                 <div id="q4" class="question">
-                    <div class="question-title">
+                    <h3 class="question-title">
                         Вопрос 4
-                    </div>
+                    </h3>
                     <div class="question-text">
                         Год окончания вуза.
                     </div>
@@ -70,9 +78,9 @@
                     </div>
                 </div>
                 <div id="q5" class="question">
-                    <div class="question-title">
+                    <h3 class="question-title">
                         Вопрос 5
-                    </div>
+                    </h3>
                     <div class="question-text">
                         Уровень владения английским языком:
                     </div>
@@ -89,9 +97,9 @@
                     </div>
                 </div>
                 <div id="q6" class="question">
-                    <div class="question-title">
+                    <h3 class="question-title">
                         Вопрос 6
-                    </div>
+                    </h3>
                     <div class="question-text">
                         Чего вы ожидаете от участия в Школе?
                     </div>
@@ -103,9 +111,9 @@
                     </div>
                 </div>
                 <div id="q7" class="question">
-                    <div class="question-title">
+                    <h3 class="question-title">
                         Вопрос 7
-                    </div>
+                    </h3>
                     <div class="question-text">
                         Откуда вы о нас узнали?
                     </div>
@@ -117,9 +125,9 @@
                     </div>
                 </div>
                 <div id="q8" class="question">
-                    <div class="question-title">
+                    <h3 class="question-title">
                         Вопрос 8
-                    </div>
+                    </h3>
                     <div class="question-text">
                         Сколько времени вы были бы готовы уделять стажировке или работе в Яндексе?
                     </div>
@@ -131,9 +139,9 @@
                     </div>
                 </div>
                 <div id="q9" class="question">
-                    <div class="question-title">
+                    <h3 class="question-title">
                         Вопрос 9
-                    </div>
+                    </h3>
                     <div class="question-text">
                         Расскажите о вашем опыте разработки. Нам будет интересно всё — как серьезный интерфейс, так и просто домашняя страничка.
                     </div>
@@ -145,9 +153,9 @@
                     </div>
                 </div>
                 <div id="q10" class="question">
-                    <div class="question-title">
+                    <h3 class="question-title">
                         Вопрос 10
-                    </div>
+                    </h3>
                     <div class="question-text">
                         Если вы где-нибудь работали, расскажите, какие у вас были должностные обязанности и был ли опыт работы в команде.
                     </div>
@@ -159,9 +167,9 @@
                     </div>
                 </div>
                 <div id="q11" class="question">
-                    <div class="question-title">
+                    <h3 class="question-title">
                         Вопрос 11
-                    </div>
+                    </h3>
                     <div class="question-text">
                         Перечислите, какими программными продуктами вы пользуетесь в своей работе — от редактора до специализированных утилит (Intellij Idea, Node.js, Uglify.js, GNU Make). Для каждого инструмента укажите, какие задачи вы с помощью него решаете и почему выбрали именно его.
                     </div>
@@ -173,9 +181,9 @@
                     </div>
                 </div>
                 <div id="q12" class="question">
-                    <div class="question-title">
+                    <h3 class="question-title">
                         Вопрос 12
-                    </div>
+                    </h3>
                     <div class="question-text">
                         Пользуетесь ли вы командной строкой? Какими командами вы пользуетесь и какие задачи вы решаете с их помощью? С какими программами вы преимущественно или полностью взаимодействуете через интерфейс командной строки?
                     </div>
@@ -187,9 +195,9 @@
                     </div>
                 </div>
                 <div id="q13" class="question">
-                    <div class="question-title">
+                    <h3 class="question-title">
                         Вопрос 13
-                    </div>
+                    </h3>
                     <div class="question-text">
                         <p>Напишите на JavaScript функцию, которая выводит список всех чисел, которые равны сумме факториалов своих цифр. Пример такого числа:</p>
 
@@ -205,9 +213,9 @@
                     </div>
                 </div>
                 <div id="q14" class="question">
-                    <div class="question-title">
+                    <h3 class="question-title">
                         Вопрос 14
-                    </div>
+                    </h3>
                     <div class="question-text">
                         <p>Вы — пилот грузового межгалактического корабля. Ваша работа — перевозка грузов с одной планету на другую. Грузоподъемность вашего корабля ограничена, поэтому за один рейс вы можете перевезти не более N кг полезного груза. Ваш корабль умеет сообщать свое состояние (местоположение и степень загруженности), а также летать в любую точку пространства. Каждая планета может содержать на себе груз, который можно взять. Также на каждой планете груз можно оставить.</p>
 
@@ -229,9 +237,9 @@
                     </div>
                 </div>
                 <div id="q15" class="question">
-                    <div class="question-title">
+                    <h3 class="question-title">
                         Вопрос 15
-                    </div>
+                    </h3>
                     <div class="question-text">
                         <p>Сверстайте форму-анкету с нашими заданиями для кандидатов. Страница должна работать в следующих браузерах:
                             MSIE (8, 9, 10), Google Chrome (26, 27), Firefox (20, 21), Opera (12.15, 12.14), Яндекс.Браузер 1.5. 

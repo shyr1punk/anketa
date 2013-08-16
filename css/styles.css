@@ -9,7 +9,7 @@ body {
 
 #form {
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 100px auto;
 }
 
 .question {
@@ -83,4 +83,44 @@ input + .value{
 
 textarea + .value{
     padding: 5px 5px;
+}
+
+.fixed-bar {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 1030;
+    margin-bottom: 0;
+    height: 80px;
+    width: 1000px;
+    background: #eeeeee;
+    margin: 0 auto;
+}
+
+.complite {
+    color: #2ca82c;
+}
+
+#title {
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    font: 16pt verdana;
+}
+
+h2 {
+    font: 14pt verdana;
+}
+
+h3 {
+    font: 10pt verdana;
+}
+
+#about label {
+    display: block;
+    float: left;
+    width: 350px;
 }
