@@ -4,7 +4,12 @@ var validator;
 
 function Validator() {
     'use strict';
+    var i;
     this.answers = {};
+    for (i = 1; i <= 15; i += 1) {
+        this.answers['q' + i] = 0;
+    }
+    this.about = 0;
 }
 
 Validator.prototype.checkField = function (name) {
@@ -35,7 +40,7 @@ Validator.prototype.checkField = function (name) {
 Validator.prototype.hideInput = function (name) {
     'use strict';
     if (this.checkField(name)) {
-        $('input[name="' + name + '"]').hide();
+        $('input[name="' + name + '"]').removeClass('field_error').hide();
         $('#value' + name).html($('input[name="' + name + '"]').val()).show();
         $('#' + name).removeClass('error').addClass('ok');
         this.answers[name] = 1;
@@ -53,7 +58,7 @@ Validator.prototype.hideInput = function (name) {
 Validator.prototype.hideTextarea = function (name) {
     'use strict';
     if (this.checkField(name)) {
-        $('textarea[name="' + name + '"]').hide();
+        $('textarea[name="' + name + '"]').removeClass('field_error').hide();
         $('#value' + name).html($('textarea[name="' + name + '"]').val().replace(/\n/g, "<br>")).show();
         if (name === 'q5') {
             return;
@@ -121,12 +126,14 @@ $(function () {
     $('textarea').focusout(function () {
         validator.hideTextarea(this.name);
     });
+    $('.required input').change(function () {
+        validator.checkAbout();
+    });
     $('input:radio').change(function () {
         if (validator.checkRadio(this.name)) {
             $('#' + this.name.substr(0, 2)).removeClass('error').addClass('ok');
+            $('#q5radiobuttons').removeClass('field_error');
             validator.answers[this.name] = 1;
-        } else {
-            $('#' + this.name.substr(0, 2)).removeClass('ok').addClass('error');
         }
         validator.writeAnswer();
     });
@@ -151,4 +158,38 @@ Validator.prototype.writeAnswer = function () {
     } else {
         $('#answer').removeClass('complite');
     }
+};
+
+Validator.prototype.checkAbout = function () {
+    'use strict';
+    if ($('input[name="nameSurname"]').val() && $('input[name="phone"]').val() && $('input[name="e-mail"]').val()) {
+        $('#about').addClass('ok');
+        return true;
+    }
+    $('#about').removeClass('ok');
+    return false;
+};
+
+Validator.prototype.check = function () {
+    'use strict';
+    var field, status = true;
+    for (field in this.answers) {
+        if (this.answers.hasOwnProperty(field)) {
+            console.log(field);
+            if (this.answers[field] === 0) {
+                if (field === 'q5') {
+                    $('#q5radiobuttons').addClass('field_error');
+                } else {
+                    $('input[name="' + field + '"], textarea[name="' + field + '"]').addClass('field_error');
+                }
+                if (status) {
+                    $('html, body').animate({
+                        scrollTop: $("#" + field).offset().top - 80
+                    }, 1000);
+                    status = false;
+                }
+            }
+        }
+    }
+    return status;
 };

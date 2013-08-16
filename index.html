@@ -2,9 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>Анкета второй школы разработки интерфейсов в Москве</title>
-        <!--[if lt IE 9]>
-            <script src="dist/html5shiv.js"></script>
-        <![endif]-->
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
         <script src="js/scripts.js" type="text/javascript"></script>
@@ -20,7 +17,7 @@
                     Отвечено на <span id="answer">0 вопросов</span> из 15
                 </div>
             </div>
-            <form id="form" action="query.php" method="post" name="form">
+            <form id="form" action="query.php" method="post" name="form" onsubmit="return validator.check();">
                 <div id="q1" class="question">
                     <h3 class="question-title">
                         Вопрос 1
@@ -279,15 +276,15 @@
                         <label>Ссылка на профиль в Моем Круге</label>
                         <input type="text" name="moiKrug"></input>
                     </div>
-                    <div>
+                    <div class="required">
                         <label>Имя, Фамилия</label>
                         <input type="text" name="nameSurname"></input>
                     </div>
-                    <div>
+                    <div class="required">
                         <label>Телефон</label>
                         <input type="text" name="phone"></input>
                     </div>
-                    <div>
+                    <div class="required">
                         <label>E-mail</label>
                         <input type="text" name="e-mail"></input>
                     </div>
@@ -309,7 +306,7 @@
                         </select>
                     </div>
                 </div>
-                <div>
+                <div id="block_submit">
                     <button class="button button-submit" type="submit">Отправить</button>
                 </div>
             </form>

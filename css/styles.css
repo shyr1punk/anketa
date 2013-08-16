@@ -12,13 +12,15 @@ body {
     margin: 100px auto;
 }
 
-.question {
+#about, .question {
     padding: 10px;
     margin: 10px 0;
+    border: 1px solid transparent;
 }
 
-.question:hover {
-    background: #eeeeee;
+#about:hover, .question:hover {
+    box-shadow: 0px 0px 15px #AAA;
+    border: 1px solid #AAA;
 }
 
 .ok {
@@ -93,7 +95,7 @@ textarea + .value{
     z-index: 1030;
     margin-bottom: 0;
     height: 80px;
-    width: 1000px;
+    width: 100%;
     background: #eeeeee;
     margin: 0 auto;
 }
@@ -122,5 +124,23 @@ h3 {
 #about label {
     display: block;
     float: left;
-    width: 350px;
+    width: 380px;
+}
+
+#about > div {
+    margin: 5px;
+}
+
+#block_submit {
+    text-align: center;
+}
+
+.required > label::after {
+    content: " *";
+    color: red;
+}
+
+.field_error {
+    border: 2px solid #F00;
+    box-shadow: 0px 0px 15px #F00;
 }
