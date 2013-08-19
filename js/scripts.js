@@ -6,8 +6,17 @@ function Validator() {
     'use strict';
     var i;
     this.answers = {};
-    for (i = 1; i <= 15; i += 1) {
-        this.answers['q' + i] = 0;
+    for (i = 1; i <= 4; i += 1) {
+        this.hideInput('q' + i);
+    }
+    if (this.checkRadio('q5radio')) {
+        $('#q5').removeClass('error').addClass('ok');
+        $('#q5radiobuttons').removeClass('field_error');
+        this.answers.q5 = 1;
+    }
+    this.writeAnswer();
+    for (i = 6; i <= 15; i += 1) {
+        this.hideTextarea('q' + i);
     }
     this.about = 0;
 }
@@ -81,7 +90,6 @@ Validator.prototype.hideTextarea = function (name) {
 
 Validator.prototype.checkEmpty = function (value) {
     'use strict';
-    console.log(value);
     if (!value) {
         return false;
     }
@@ -120,7 +128,7 @@ $(function () {
         $(this).hide();
         $('input[name="' + id + '"], textarea[name="' + this.id.substr(5) + '"]').show().focus();
     });
-    $('input[type="text"]').focusout(function () {
+    $('.question input[type="text"]').focusout(function () {
         validator.hideInput(this.name);
     });
     $('textarea').focusout(function () {
@@ -146,7 +154,6 @@ Validator.prototype.writeAnswer = function () {
         field;
     for (field in this.answers) {
         if (this.answers.hasOwnProperty(field)) {
-            console.log(field);
             if (this.answers[field] === 1) {
                 counter += 1;
             }
@@ -175,7 +182,6 @@ Validator.prototype.check = function () {
     var field, status = true;
     for (field in this.answers) {
         if (this.answers.hasOwnProperty(field)) {
-            console.log(field);
             if (this.answers[field] === 0) {
                 if (field === 'q5') {
                     $('#q5radiobuttons').addClass('field_error');
