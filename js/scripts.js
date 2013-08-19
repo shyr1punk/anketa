@@ -13,12 +13,14 @@ function Validator() {
         $('#q5').removeClass('error').addClass('ok');
         $('#q5radiobuttons').removeClass('field_error');
         this.answers.q5 = 1;
+    } else {
+        this.answers.q5 = 0;
     }
     this.writeAnswer();
     for (i = 6; i <= 15; i += 1) {
         this.hideTextarea('q' + i);
     }
-    this.about = 0;
+    this.checkAbout();
 }
 
 Validator.prototype.checkField = function (name) {
@@ -131,7 +133,7 @@ $(function () {
     $('.question input[type="text"]').focusout(function () {
         validator.hideInput(this.name);
     });
-    $('textarea').focusout(function () {
+    $('.question textarea').focusout(function () {
         validator.hideTextarea(this.name);
     });
     $('.required input').change(function () {
@@ -189,22 +191,36 @@ Validator.prototype.check = function () {
                     $('input[name="' + field + '"], textarea[name="' + field + '"]').addClass('field_error');
                 }
                 if (status) {
-                    $('html, body').animate({
-                        scrollTop: $("#" + field).offset().top - 80
-                    }, 1000);
-                    status = false;
+                    status = this.scrollTo(field);
                 }
             }
         }
     }
     if (!$('input[name="nameSurname"]').val()) {
         $('input[name="nameSurname"]').addClass('field_error');
+        if (status) {
+            status = this.scrollTo('about');
+        }
     }
     if (!$('input[name="phone"]').val()) {
         $('input[name="phone"]').addClass('field_error');
+        if (status) {
+            status = this.scrollTo('about');
+        }
     }
     if (!$('input[name="e-mail"]').val()) {
         $('input[name="e-mail"]').addClass('field_error');
+        if (status) {
+            status = this.scrollTo('about');
+        }
     }
     return status;
+};
+
+Validator.prototype.scrollTo = function (id) {
+    'use strict';
+    $('html, body').animate({
+        scrollTop: $('#' + id).offset().top - 80
+    }, 1000);
+    return false;
 };
