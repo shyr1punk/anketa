@@ -161,11 +161,11 @@ Validator.prototype.writeAnswer = function () {
             }
         }
     }
-    $('#answer').html(counter + ' вопросов');
+    $('#answerindicator').html(counter + ' вопросов');
     if (counter === 15) {
-        $('#answer').addClass('complite');
+        $('#answerindicator').addClass('complite');
     } else {
-        $('#answer').removeClass('complite');
+        $('#answerindicator').removeClass('complite');
     }
 };
 
@@ -173,9 +173,11 @@ Validator.prototype.checkAbout = function () {
     'use strict';
     if ($('input[name="nameSurname"]').val() && $('input[name="phone"]').val() && $('input[name="e-mail"]').val()) {
         $('#about').addClass('ok');
+        $('#aboutindicator').html('');
         return true;
     }
     $('#about').removeClass('ok');
+    $('#aboutindicator').html('пока не ');
     return false;
 };
 
