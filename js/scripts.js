@@ -148,6 +148,25 @@ $(function () {
         }
         validator.writeAnswer();
     });
+    $('[name="recommendedBy"]').change(function () {
+        if (this.value === 'другое') {
+            $('#another').slideDown();
+        } else {
+            $('#another').slideUp();
+        }
+    });
+    $('[name="agree"]').change(function () {
+        if (this.checked) {
+            $('[name="agree"]').removeClass('field_error');
+        }
+    });
+    $('[name="nameSurname"]').keyup(function () {
+        if (this.value === '') {
+            $('#name').html('');
+        } else {
+            $('#name').html(', ' + this.value + ',');
+        }
+    });
 });
 
 Validator.prototype.writeAnswer = function () {
@@ -212,6 +231,12 @@ Validator.prototype.check = function () {
     }
     if (!$('input[name="e-mail"]').val()) {
         $('input[name="e-mail"]').addClass('field_error');
+        if (status) {
+            status = this.scrollTo('about');
+        }
+    }
+    if (!$('[name="agree"]').checked) {
+        $('[name="agree"]').addClass('field_error');
         if (status) {
             status = this.scrollTo('about');
         }
